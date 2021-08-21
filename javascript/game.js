@@ -1,21 +1,23 @@
 let chipElementRed = document.getElementById('red')
 let chipElementBlue = document.getElementById('blue')
-let containerElement = document.getElementById('container')
 class Game{
     constructor(){
         this.tiles = [];
-        this.numPlayers = 2
-        this.currentPlayer = 1
+        this.currentPlayer = 'player1'
         this.listPlayers = [chipElementRed.className,chipElementBlue.className]
         this.newChipClass = ''
+        this.newChipId = ''
+        this.containerForNextChip = document
     }
-    init(){//tiles recebe posiçao do tabuleiro 6/7
+    // primeiro passo, iniciar
+    init(){//tiles recebe 42 posições dos elementos html para formar o tabuleiro 6/7
         for(let i = 1; i <= 42; i++){
             let tile = document.querySelector("#n"+i);
             this.tiles.push(tile);
         }
         this.renderInit()
     }
+    //segundo passo, dezenhar tabuleiro
     renderInit(){//organiza posiçoes no tabuleiro 6/7
         for(let i in this.tiles){
             let tile = this.tiles[i];
@@ -44,35 +46,40 @@ class Game{
         }
         return 'true'
     }
+    //terceiro passo, checar o proximo jogador
+    checkPlayerCurrent(){ 
+        
+        if(this.currentPlayer === 'player1'){
+            this.newChipClass = this.listPlayers[0];
+            this.currentPlayer = 'player2'
+        }else{
+            this.newChipClass = this.listPlayers[1];
+            this.currentPlayer = 'player1'
+        }
+
+    }
+    //quarto passo, checar posição selecionada 
+    checkSelectPosition(position){ //checa a posição para colocar o chip
+        // containerNextChip recebe a id do tile clicado e usa para setar a posição 
+        this.containerForNextChip = document.getElementById(position.id)//pega apenas o id 
+    }
+    //checar se a posição no tabuleiro ja tem um chip
+    checkTilePosition(){
+        //trabalhar aqui
+    }
 
     createChipElement(){
-
+    
         let newChip = document.createElement('div')
         let classes = this.newChipClass.split(' ')
+        newChip.id = this.newChipId
         for(let i in classes){
             newChip.classList.add(classes[i])
-            containerElement.appendChild(newChip)
+            this.containerForNextChip.appendChild(newChip)
         }
     }
     
-    checkPlayerCurrent(){
-        
-        if(this.currentPlayer === 1){
-            console.log('1')
-            this.newChipClass = this.listPlayers[0];
-            this.currentPlayer = 2
-        }else{
-            console.log('2')
-            this.newChipClass = this.listPlayers[1];
-            this.currentPlayer = 1
-        }
-
-    }
-   
-    checkChosenPosition(){
-
-    }
-    checkChipPosition(){
+    conditionWins(){
 
     }
     gameOver(){

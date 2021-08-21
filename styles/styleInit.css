@@ -37,7 +37,7 @@
 
 .container {
 	display: flex;
-	align-items: initial;
+	align-items: center;
 	max-width: 220px;
 	margin: 50px auto;
 }
