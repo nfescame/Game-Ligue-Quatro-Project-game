@@ -1,10 +1,12 @@
-let chipRedElement = document.getElementById('red')
-let chipBlueElement = document.getElementById('blue')
 
+const game = new Game();
 
-class Chip{
-    constructor(){
-        
-
+document.addEventListener('click', (event) => {
+    if(game.renderInit()){
+        game.checkPlayerCurrent()
+        game.createChipElement()
     }
-}
+    
+});
+
+game.init();
