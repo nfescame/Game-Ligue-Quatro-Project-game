@@ -1,0 +1,41 @@
+.circulo-pequeno {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin: 10px;
+	float: left;
+	animation: circulo 1s linear infinite;
+}
+
+.circulo-pequeno.lime {
+	animation: circulo-inverno 1s linear infinite;
+}
+
+@keyframes circulo {
+	from {
+		transform: rotate(0deg) translateX(30px);
+	} to {
+		transform: rotate(360deg) translateX(30px);
+	}
+}
+
+@keyframes circulo-inverno {
+	from {
+		transform: rotate(0deg) translateX(30px);
+	} to {
+		transform: rotate(-360deg) translateX(30px);
+	}
+}
+
+.lime {
+	background: springgreen;
+}
+
+.tomato {
+	background: tomato;
+}
+
+.container {
+	max-width: 220px;
+	margin: 50px auto;
+}
