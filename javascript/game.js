@@ -1,90 +1,76 @@
-let chipElementRed = document.getElementById('red')
-let chipElementBlue = document.getElementById('blue')
 class Game{
     constructor(){
-        this.tiles = [];
-        this.currentPlayer = 'player1'
-        this.listPlayers = [chipElementRed.className,chipElementBlue.className]
-        this.newChipClass = ''
-        this.newChipId = ''
-        this.containerForNextChip = document
+        this.chipSelect
+        this.fullColumn = false
+        this.lin
+        this.gameOver = false;
+        this.winningPlay = []
+        this.currentPlayer = ''
+        this.board = [
+        [5,4,3,2,1,0],
+        [11,10,9,8,7,6],
+        [17,16,15,14,13,12],
+        [23,22,21,20,19,18],
+        [29,28,27,26,25,24],
+        [35,34,33,32,31,30],
+        [41,40,39,38,37,36]
+      ];
+
+        this.boardBackUp = [
+        [5,4,3,2,1,0],
+        [11,10,9,8,7,6],
+        [17,16,15,14,13,12],
+        [23,22,21,20,19,18],
+        [29,28,27,26,25,24],
+        [35,34,33,32,31,30],
+        [41,40,39,38,37,36]
+       ];
     }
-    // primeiro passo, iniciar
-    init(){//tiles recebe 42 posições dos elementos html para formar o tabuleiro 6/7
-        for(let i = 1; i <= 42; i++){
-            let tile = document.querySelector("#n"+i);
-            this.tiles.push(tile);
+    nextPlayer(){
+        if(this.currentPlayer === 'player1'){
+            this.currentPlayer = 'player2'
+            return 'player2'
+        }else{
+            this.currentPlayer = 'player1'
+            return 'player1'
         }
-        this.renderInit()
+        
     }
-    //segundo passo, dezenhar tabuleiro
-    renderInit(){//organiza posiçoes no tabuleiro 6/7
-        for(let i in this.tiles){
-            let tile = this.tiles[i];
-            if(tile){
-                tile.style.left = (i%7) * 100 + "px";
-                if(i < 7){
-                    tile.style.top = "0px"
-                }else
-                if(i < 14){
-                    tile.style.top = "100px"
-                }else
-                if(i < 21){
-                    tile.style.top = "200px"
-                }else
-                if(i < 28){
-                    tile.style.top = "300px"
-                }else
-                if(i < 35){
-                    tile.style.top = "400px"
-                }else
-                if(i < 42){
-                    tile.style.top = "500px"
+    fillTile(col){
+        this.nextPlayer()//verifica player atual
+        
+        for(let i = 0; i < this.boardBackUp.length; i++){ //varre o array pai
+
+            if(this.boardBackUp[i] === this.boardBackUp[col]){ //entra na coluna
+            
+                for(let j = 0 ; j < this.boardBackUp[i].length; j++){
+
+                    if(!isNaN(this.boardBackUp[i][j])){
+                        
+                        this.lin = this.boardBackUp[i][j]
+                        this.boardBackUp[i][j] = this.currentPlayer
+                        return this.boardBackUp[col][i] //5
+                    }
+                    
                 }
                 
             }
         }
-        return 'true'
+
+        this.nextPlayer() // 
+     
     }
-    //terceiro passo, checar o proximo jogador
-    checkPlayerCurrent(){ 
-        
+    printChip(colSelect){
+        console.log(this.lin)
+        const chip = document.getElementById(this.lin)
         if(this.currentPlayer === 'player1'){
-            this.newChipClass = this.listPlayers[0];
-            this.currentPlayer = 'player2'
+            chip.classList.add('color-red')
         }else{
-            this.newChipClass = this.listPlayers[1];
-            this.currentPlayer = 'player1'
+            chip.classList.add('color-blue')
         }
-
+       
     }
-    //quarto passo, checar posição selecionada 
-    checkSelectPosition(position){ //checa a posição para colocar o chip
-        // containerNextChip recebe a id do tile clicado e usa para setar a posição 
-        this.containerForNextChip = document.getElementById(position.id)//pega apenas o id 
-    }
-    //checar se a posição no tabuleiro ja tem um chip
-    checkTilePosition(){
-        //trabalhar aqui
-    }
-
-    createChipElement(){
-    
-        let newChip = document.createElement('div')
-        let classes = this.newChipClass.split(' ')
-        newChip.id = this.newChipId
-        for(let i in classes){
-            newChip.classList.add(classes[i])
-            this.containerForNextChip.appendChild(newChip)
-        }
-    }
-    
-    conditionWins(){
-
-    }
-    gameOver(){
-
-    }
-
+   
+       
 }
 

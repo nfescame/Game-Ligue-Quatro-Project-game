@@ -5,62 +5,56 @@
 }
 
 .windows{
-    background-color: pink;
     display: flex;
     padding: 50px;
 }
 .panel {
+    display: flex;
     width: 700px;
     height: 600px;
-    border-radius: 10px;
+    border-radius: 15px;
+    
+}
+.ficha{
+    background-image: url(/img/poker-chips-set.png);
+    background-repeat: repeat-y;
+    height: 100px;
+    width: 100px;
+    
+}
+.color-red{
+    background-size: 300px 300px;
+    background-position: 0px 0px;
+}
+.color-blue{
+    background-size: 300px 300px;
+    background-position: 0px 200px;
 }
 #container {
+    background-image: url('/img/bacgroundLig4.jpeg');
+    background-repeat: repeat-y;
+    background-size: 800px 800px;
     position: relative;
     margin: 50px auto;
-    background-color: #fff;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 100px rgba(0,0,0,0.5);
 }
-#container-chip{
-    position: relative;
-    width: 700px;
+.container-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     height: 600px;
+    width: 100px;
 }
+.container-col:hover{
+    border-radius: 15px;
+    background-color: rgba(17, 0, 255, 0.431);
+}
+
 .tile {
     width: 100px;
     height: 100px;
     position: absolute;
-    background-color:rgba(127, 255, 212, 0.5);
 }
 
-.tile:hover {
-    background-color: blue;
-    border-radius: 10px;
-}
-.tile:hover {
-    background-color: red;
-    border-radius: 10px;
-}
-.chip{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 25px 25px 50px;
 
-    
-}
-.red{
-    background-color: red;
-}
-.blue{
-    background-color: blue;
-}
-.hover{
-    width: 100px;
-    height: 600px;
-}
-.hover:hover{
-    background-color:rgba(127, 255, 212, 0.5);
-    width: 100px;
-    height: 600px;
-    border-radius: 10px;
-}
+
