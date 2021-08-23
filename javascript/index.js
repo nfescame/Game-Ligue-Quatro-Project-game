@@ -7,7 +7,7 @@ document.addEventListener('click', (event) => {
         const colSelect = event.target.parentElement.id//pega o id da coluna clicada 
         const idCol = colSelect.substr(-1,1)//retira apenas o numero da id 
         game.fillTile(idCol)//invoca a função pasando o parametro (num da coluna selecionada)
-        game.printChip(colSelect)
+        game.printChip()
        
     }
  

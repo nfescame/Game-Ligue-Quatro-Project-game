@@ -1,7 +1,5 @@
 class Game{
     constructor(){
-        this.chipSelect
-        this.fullColumn = false
         this.lin
         this.gameOver = false;
         this.winningPlay = []
@@ -37,7 +35,7 @@ class Game{
         
     }
     fillTile(col){
-        this.nextPlayer()//verifica player atual
+        this.nextPlayer()
         
         for(let i = 0; i < this.boardBackUp.length; i++){ //varre o array pai
 
@@ -49,7 +47,7 @@ class Game{
                         
                         this.lin = this.boardBackUp[i][j]
                         this.boardBackUp[i][j] = this.currentPlayer
-                        return this.boardBackUp[col][i] //5
+                        return this.boardBackUp[col][i] 
                     }
                     
                 }
@@ -57,16 +55,16 @@ class Game{
             }
         }
 
-        this.nextPlayer() // 
+        this.nextPlayer() 
      
     }
-    printChip(colSelect){
+    printChip(){
         console.log(this.lin)
         const chip = document.getElementById(this.lin)
         if(this.currentPlayer === 'player1'){
             chip.classList.add('color-red')
         }else{
-            chip.classList.add('color-blue')
+            chip.classList.add('color-yellow')
         }
        
     }
