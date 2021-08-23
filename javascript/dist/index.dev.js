@@ -8,14 +8,18 @@ document.addEventListener('click', function (event) {
 
     var idCol = colSelect.substr(-1, 1); //retira apenas o numero da id 
 
-    game.fillTile(idCol); //invoca a função pasando o parametro (num da coluna selecionada)
+    if (!game.gameOver) {
+      game.fillTile(idCol); //invoca a função pasando o parametro (num da coluna selecionada)
 
-    game.printChip(); // spawn chip 
+      game.printChip(); // spawn chip 
 
-    game.winningCheck(); // falta comcluir
+      game.checkWinCondition();
+    }
+
+    game.posWinin.map(function (pos) {
+      var posTile = document.getElementById(pos.toString());
+      posTile.classList.add('bg-info');
+    });
   }
 });
-btnResetElement.addEventListener('click', function (event) {
-  game.restartGame();
-  game.clearBoardBackUp();
-});
+btnResetElement.addEventListener('click', function (event) {});

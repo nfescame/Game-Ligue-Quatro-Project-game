@@ -12,9 +12,9 @@ function () {
   function Game() {
     _classCallCheck(this, Game);
 
+    this.posWinin = [];
     this.lin;
     this.gameOver = false;
-    this.winningPlay = [];
     this.currentPlayer = '';
     this.board = [[5, 4, 3, 2, 1, 0], [11, 10, 9, 8, 7, 6], [17, 16, 15, 14, 13, 12], [23, 22, 21, 20, 19, 18], [29, 28, 27, 26, 25, 24], [35, 34, 33, 32, 31, 30], [41, 40, 39, 38, 37, 36]];
     this.boardBackUp = [[5, 4, 3, 2, 1, 0], [11, 10, 9, 8, 7, 6], [17, 16, 15, 14, 13, 12], [23, 22, 21, 20, 19, 18], [29, 28, 27, 26, 25, 24], [35, 34, 33, 32, 31, 30], [41, 40, 39, 38, 37, 36]];
@@ -36,15 +36,15 @@ function () {
     value: function fillTile(col) {
       this.nextPlayer();
 
-      for (var i = 0; i < this.boardBackUp.length; i++) {
+      for (var i = 0; i < this.board.length; i++) {
         //varre o array pai
-        if (this.boardBackUp[i] === this.boardBackUp[col]) {
+        if (this.board[i] === this.board[col]) {
           //entra na coluna
-          for (var j = 0; j < this.boardBackUp[i].length; j++) {
-            if (!isNaN(this.boardBackUp[i][j])) {
-              this.lin = this.boardBackUp[i][j];
-              this.boardBackUp[i][j] = this.currentPlayer;
-              return this.boardBackUp[col][i];
+          for (var j = 0; j < this.board[i].length; j++) {
+            if (!isNaN(this.board[i][j])) {
+              this.lin = this.board[i][j];
+              this.board[i][j] = this.currentPlayer;
+              return this.board[col][i];
             }
           }
         }
@@ -64,36 +64,24 @@ function () {
       }
     }
   }, {
-    key: "winningCheck",
-    value: function winningCheck() {
-      for (var i = 0; i < this.board.length; i++) {
-        for (var j = 0; j < this.board[i].length; j++) {
-          if (this.boardBackUp[i][j] === 'player1') {//console.log(this.boardBackUp[i][j],i,j)
-          }
+    key: "checkWinCondition",
+    value: function checkWinCondition() {
+      var victoryCondition = [[[0, 0], [0, 1], [0, 2], [0, 3]], [[1, 0], [1, 1], [1, 2], [1, 3]], [[2, 0], [2, 1], [2, 2], [2, 3]], [[3, 0], [3, 1], [3, 2], [3, 3]], [[4, 0], [4, 1], [4, 2], [4, 3]], [[5, 0], [5, 1], [5, 2], [5, 3]], [[6, 0], [6, 1], [6, 2], [6, 3]], // vertical inferior
+      [[0, 1], [0, 2], [0, 3], [0, 4]], [[1, 1], [1, 2], [1, 3], [1, 4]], [[2, 1], [2, 2], [2, 3], [2, 4]], [[3, 1], [3, 2], [3, 3], [3, 4]], [[4, 1], [4, 2], [4, 3], [4, 4]], [[5, 1], [5, 2], [5, 3], [5, 4]], [[6, 1], [6, 2], [6, 3], [6, 4]], //vertical meio 
+      [[0, 2], [0, 3], [0, 4], [0, 5]], [[1, 2], [1, 3], [1, 4], [1, 5]], [[2, 2], [2, 3], [2, 4], [2, 5]], [[3, 2], [3, 3], [3, 4], [3, 5]], [[4, 2], [4, 3], [4, 4], [4, 5]], [[5, 2], [5, 3], [5, 4], [5, 5]], [[6, 2], [6, 3], [6, 4], [6, 5]]];
 
-          if (this.boardBackUp[i][j] === 'player2') {//console.log(this.boardBackUp[i][j],i,j)
-          }
+      for (var i = 0; i < victoryCondition.length; i++) {
+        var coord1 = victoryCondition[i][0];
+        var coord2 = victoryCondition[i][1];
+        var coord3 = victoryCondition[i][2];
+        var coord4 = victoryCondition[i][3];
+
+        if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] && this.board[coord2[0]][coord2[1]] === this.board[coord3[0]][coord3[1]] && this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]) {
+          console.log("Vitoria do ".concat(this.currentPlayer));
+          this.gameOver = true;
+          this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]], this.boardBackUp[coord3[0]][coord3[1]], this.boardBackUp[coord4[0]][coord4[1]]];
         }
       }
-    }
-  }, {
-    key: "restartGame",
-    value: function restartGame() {
-      for (var i = 0; i < this.board.length; i++) {
-        for (var j = 0; j < this.boardBackUp[j].length; j++) {
-          var linReset = this.board[i][j];
-          var chipClear = document.getElementById(linReset);
-          chipClear.classList.remove('color-red');
-          chipClear.classList.remove('color-yellow');
-        }
-      }
-    }
-  }, {
-    key: "clearBoardBackUp",
-    value: function clearBoardBackUp() {
-      this.boardBackUp = this.board;
-      console.log(this.boardBackUp);
-      console.log(this.board);
     }
   }]);
 
