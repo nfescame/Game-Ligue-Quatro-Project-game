@@ -25,7 +25,6 @@ document.addEventListener('click', (event) => {
 btnResetElement.addEventListener('click', (event) => {
     
    
- 
 });
 
 
