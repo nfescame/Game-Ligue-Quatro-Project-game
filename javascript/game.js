@@ -59,16 +59,49 @@ class Game{
      
     }
     printChip(){
-        console.log(this.lin)
+        
         const chip = document.getElementById(this.lin)
         if(this.currentPlayer === 'player1'){
             chip.classList.add('color-red')
         }else{
             chip.classList.add('color-yellow')
         }
-       
+
     }
-   
-       
+
+    winningCheck(){
+        for(let i = 0; i < this.board.length; i++){
+            for(let j = 0; j < this.board[i].length; j++){
+                
+                if(this.boardBackUp[i][j] === 'player1'){
+                    //console.log(this.boardBackUp[i][j],i,j)
+                }
+                if(this.boardBackUp[i][j] === 'player2'){
+                    //console.log(this.boardBackUp[i][j],i,j)
+                }
+            } 
+        }
+    }
+    
+    restartGame(){
+        
+        for(let i = 0; i < this.board.length; i++){
+            for(let j = 0; j < this.boardBackUp[j].length; j++){
+                
+                let linReset = this.board[i][j]
+                
+                const chipClear = document.getElementById(linReset)
+
+                chipClear.classList.remove('color-red')
+                chipClear.classList.remove('color-yellow')
+
+            }
+        }
+    }
+    clearBoardBackUp(){
+        this.boardBackUp = this.board
+        console.log(this.boardBackUp)
+        console.log(this.board)
+    }   
 }
 

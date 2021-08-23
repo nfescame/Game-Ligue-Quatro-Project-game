@@ -1,5 +1,6 @@
 "use strict";
 
+var btnResetElement = document.getElementById('reset');
 var game = new Game();
 document.addEventListener('click', function (event) {
   if (event.target.parentElement.classList.contains('container-col')) {
@@ -9,6 +10,12 @@ document.addEventListener('click', function (event) {
 
     game.fillTile(idCol); //invoca a função pasando o parametro (num da coluna selecionada)
 
-    game.printChip();
+    game.printChip(); // spawn chip 
+
+    game.winningCheck(); // falta comcluir
   }
+});
+btnResetElement.addEventListener('click', function (event) {
+  game.restartGame();
+  game.clearBoardBackUp();
 });

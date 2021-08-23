@@ -55,7 +55,6 @@ function () {
   }, {
     key: "printChip",
     value: function printChip() {
-      console.log(this.lin);
       var chip = document.getElementById(this.lin);
 
       if (this.currentPlayer === 'player1') {
@@ -63,6 +62,38 @@ function () {
       } else {
         chip.classList.add('color-yellow');
       }
+    }
+  }, {
+    key: "winningCheck",
+    value: function winningCheck() {
+      for (var i = 0; i < this.board.length; i++) {
+        for (var j = 0; j < this.board[i].length; j++) {
+          if (this.boardBackUp[i][j] === 'player1') {//console.log(this.boardBackUp[i][j],i,j)
+          }
+
+          if (this.boardBackUp[i][j] === 'player2') {//console.log(this.boardBackUp[i][j],i,j)
+          }
+        }
+      }
+    }
+  }, {
+    key: "restartGame",
+    value: function restartGame() {
+      for (var i = 0; i < this.board.length; i++) {
+        for (var j = 0; j < this.boardBackUp[j].length; j++) {
+          var linReset = this.board[i][j];
+          var chipClear = document.getElementById(linReset);
+          chipClear.classList.remove('color-red');
+          chipClear.classList.remove('color-yellow');
+        }
+      }
+    }
+  }, {
+    key: "clearBoardBackUp",
+    value: function clearBoardBackUp() {
+      this.boardBackUp = this.board;
+      console.log(this.boardBackUp);
+      console.log(this.board);
     }
   }]);
 
