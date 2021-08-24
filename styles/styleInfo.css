@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+body{
+    padding: 0 50px;
+}
+section{
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+header{
+    height: 130px;
+    background-color: steelblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    text-shadow: #000 15px 10px 7px;
+    color: white;
+    font-size: 80px;
+}
+
+.container{
+    background-color: steelblue;
+    align-items: center;
+    display: block;
+    justify-content: space-between;
+    width: 600px;
+    padding: 35px;
+    box-shadow: 30px 30px 20px rgb(0 0 0 / 50%);
+}
+
