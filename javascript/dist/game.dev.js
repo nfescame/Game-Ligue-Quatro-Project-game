@@ -15,11 +15,12 @@ function () {
     _classCallCheck(this, Game);
 
     this.posWinin = [];
+    this.textWin = '';
     this.lin;
     this.gameOver = false;
     this.currentPlayer = '';
-    this.board = [[5, 4, 3, 2, 1, 0], [11, 10, 9, 8, 7, 6], [17, 16, 15, 14, 13, 12], [23, 22, 21, 20, 19, 18], [29, 28, 27, 26, 25, 24], [35, 34, 33, 32, 31, 30], [41, 40, 39, 38, 37, 36]];
-    this.boardBackUp = [[5, 4, 3, 2, 1, 0], [11, 10, 9, 8, 7, 6], [17, 16, 15, 14, 13, 12], [23, 22, 21, 20, 19, 18], [29, 28, 27, 26, 25, 24], [35, 34, 33, 32, 31, 30], [41, 40, 39, 38, 37, 36]];
+    this.board = [[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11], [12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23], [24, 25, 26, 27, 28, 29], [30, 31, 32, 33, 34, 35], [36, 37, 38, 39, 40, 41]];
+    this.boardBackUp = [[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11], [12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23], [24, 25, 26, 27, 28, 29], [30, 31, 32, 33, 34, 35], [36, 37, 38, 39, 40, 41]];
   }
 
   _createClass(Game, [{
@@ -90,9 +91,20 @@ function () {
         var coord4 = victoryCondition[i][3];
 
         if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] && this.board[coord2[0]][coord2[1]] === this.board[coord3[0]][coord3[1]] && this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]) {
-          console.log("Vitoria do ".concat(this.currentPlayer));
-          this.gameOver = true;
+          this.textWin = "Vitoria do ".concat(this.currentPlayer);
           this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]], this.boardBackUp[coord3[0]][coord3[1]], this.boardBackUp[coord4[0]][coord4[1]]];
+          this.gameOver = true;
+        }
+
+        if (this.gameOver) {
+          if (this.currentPlayer === 'player1') {
+            console.log('ok');
+            chipDecorationElement.classList.remove('color-yellow');
+            chipDecorationElement.classList.add('color-red', 'ficha-radius');
+          } else {
+            chipDecorationElement.classList.remove('color-red');
+            chipDecorationElement.classList.add('color-yellow', 'ficha-radius');
+          }
         }
       }
     }

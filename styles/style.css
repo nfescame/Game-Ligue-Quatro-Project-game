@@ -43,8 +43,12 @@ h1{
     background-repeat: repeat-y;
     height: 100px;
     width: 100px;
-    border-radius: 50%;
+    transition: transform 0.8s;
     
+}
+.ficha-radius{
+    border-radius: 50%;
+    transform: rotateY(180deg);
 }
 .color-red{
     background-size: 300px 300px;
@@ -79,9 +83,7 @@ h1{
     height: 100px;
     position: absolute;
 }
-.rotate{
-    transform: rotateY(180deg);
-}
+
 .btn-next{
     display: flex;
     flex-direction: column;
@@ -94,8 +96,9 @@ h1{
 #dec{
     margin-left: 80px;
 }
-span {
+#text {
     text-align: center;
+    font-size: 30px;
 }
 
 

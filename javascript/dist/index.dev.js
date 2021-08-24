@@ -1,9 +1,11 @@
 "use strict";
 
 var btnResetElement = document.getElementById('reset');
+var textElement = document.getElementById('text');
 var game = new Game();
 document.addEventListener('click', function (event) {
   if (event.target.parentElement.classList.contains('container-col')) {
+    var textWin = '';
     var colSelect = event.target.parentElement.id; //pega o id da coluna clicada 
 
     var idCol = colSelect.substr(-1, 1); //retira apenas o numero da id 
@@ -18,7 +20,9 @@ document.addEventListener('click', function (event) {
 
     game.posWinin.map(function (pos) {
       var posTile = document.getElementById(pos.toString());
-      posTile.classList.add('bg-info');
+      posTile.classList.add('bg-info', 'ficha-radius');
+      console.log(textWin);
+      textElement.innerText = game.textWin;
     });
   }
 });
