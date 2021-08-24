@@ -26,4 +26,6 @@ document.addEventListener('click', function (event) {
     });
   }
 });
-btnResetElement.addEventListener('click', function (event) {});
+btnResetElement.addEventListener('click', function (event) {
+  window.location.reload();
+});

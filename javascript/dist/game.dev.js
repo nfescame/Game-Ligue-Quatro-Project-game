@@ -26,12 +26,12 @@ function () {
   _createClass(Game, [{
     key: "nextPlayer",
     value: function nextPlayer() {
-      if (this.currentPlayer === 'player1') {
-        this.currentPlayer = 'player2';
-        return 'player2';
+      if (this.currentPlayer === 'Player1') {
+        this.currentPlayer = 'Player2';
+        return 'Player2';
       } else {
-        this.currentPlayer = 'player1';
-        return 'player1';
+        this.currentPlayer = 'Player1';
+        return 'Player1';
       }
     }
   }, {
@@ -60,7 +60,7 @@ function () {
     value: function printChip() {
       var chip = document.getElementById(this.lin);
 
-      if (this.currentPlayer === 'player1') {
+      if (this.currentPlayer === 'Player1') {
         chip.classList.add('color-red');
         chipDecorationElement.classList.remove('color-red');
         chipDecorationElement.classList.add('color-yellow');
@@ -91,13 +91,13 @@ function () {
         var coord4 = victoryCondition[i][3];
 
         if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] && this.board[coord2[0]][coord2[1]] === this.board[coord3[0]][coord3[1]] && this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]) {
-          this.textWin = "Vitoria do ".concat(this.currentPlayer);
+          this.textWin = "".concat(this.currentPlayer, " Win.");
           this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]], this.boardBackUp[coord3[0]][coord3[1]], this.boardBackUp[coord4[0]][coord4[1]]];
           this.gameOver = true;
         }
 
         if (this.gameOver) {
-          if (this.currentPlayer === 'player1') {
+          if (this.currentPlayer === 'Player1') {
             console.log('ok');
             chipDecorationElement.classList.remove('color-yellow');
             chipDecorationElement.classList.add('color-red', 'ficha-radius');

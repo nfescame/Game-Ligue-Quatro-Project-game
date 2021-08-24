@@ -28,12 +28,12 @@ class Game{
     }
 
     nextPlayer(){
-        if(this.currentPlayer === 'player1'){
-            this.currentPlayer = 'player2'
-            return 'player2'
+        if(this.currentPlayer === 'Player1'){
+            this.currentPlayer = 'Player2'
+            return 'Player2'
         }else{
-            this.currentPlayer = 'player1'
-            return 'player1'
+            this.currentPlayer = 'Player1'
+            return 'Player1'
         }
         
     }
@@ -65,7 +65,7 @@ class Game{
     printChip(){
         
         const chip = document.getElementById(this.lin)
-        if(this.currentPlayer === 'player1'){
+        if(this.currentPlayer === 'Player1'){
             chip.classList.add('color-red')
             chipDecorationElement.classList.remove('color-red')
             chipDecorationElement.classList.add('color-yellow')
@@ -165,16 +165,16 @@ class Game{
             this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]){
 
                 
-                this.textWin = `Vitoria do ${this.currentPlayer}`
+                this.textWin = `${this.currentPlayer} Win.`
                 this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]],this.boardBackUp[coord3[0]][coord3[1]],this.boardBackUp[coord4[0]][coord4[1]]]
                 this.gameOver = true
 
             }
 
-            
+
             if(this.gameOver){
 
-                if(this.currentPlayer === 'player1'){
+                if(this.currentPlayer === 'Player1'){
                     console.log('ok')
                     chipDecorationElement.classList.remove('color-yellow')
                     chipDecorationElement.classList.add('color-red','ficha-radius')
