@@ -28,8 +28,8 @@
         <div>
             
             <div class="btn-audio col-4">
-                <div class='audio'>
-                    <img id='audioOnOff' class='audioOn' src="/img/mic.svg" alt="">
+                <div class='BoxAudio'>
+                    <img id='audioOnOff' class='audioOn' src="/img/audioOn.jpg" alt="">
                 </div>
                 <input id="reset" class="btn btn-primary btn-lg" type="reset" value="Reset">
                 <input id="play" class="btn btn-danger btn-lg" type="reset" value="Play">
@@ -38,7 +38,7 @@
             <!-- painel lateral informativo -->
             <div class="next">
                 <div id="dec" class='ficha color-red'></div>
-                <span id="text" class="text">PLAYER MOMENT</span>
+                <span id="text" class="text">NEXT PLAYER</span>
             </div>
         </div>
         
@@ -118,12 +118,12 @@
         <div class="score">
             <div class='box-score'>
                 <p class='scoreLabelP1'>SCORE PLAYER 1</p>
-                <span class='scoreP1'></span>
+                <span id='scoreP1' class='poits'>0</span>
                 <div id="dec" class='ficha color-red'></div>
             </div>
             <div class='box-score'>
                 <p class='scoreLabelP2'>SCORE PLAYER 2</p>
-                <span class='scoreP2'></span>
+                <span id='scoreP2'class='poits'>0</span>
                 <div id="dec" class='ficha color-yellow'></div>
             </div>
         </div>

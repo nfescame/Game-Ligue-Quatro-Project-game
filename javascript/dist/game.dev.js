@@ -8,6 +8,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var chipDecorationElement = document.getElementById('dec');
 var winningSoundElement = document.getElementById('wininngSound');
+var scoreLabelP1Element = document.getElementById('scoreP1');
+var scoreLabelP2Element = document.getElementById('scoreP2');
 
 var Game =
 /*#__PURE__*/
@@ -15,8 +17,9 @@ function () {
   function Game() {
     _classCallCheck(this, Game);
 
-    this.points = 0;
+    this.points = 10;
     this.posWinin = [];
+    this.allPos = [];
     this.textWin = '';
     this.lin;
     this.gameOver = false;
@@ -48,6 +51,7 @@ function () {
           for (var j = 0; j < this.board[i].length; j++) {
             if (!isNaN(this.board[i][j])) {
               this.lin = this.board[i][j];
+              this.allPos.push(this.board[i][j]);
               this.board[i][j] = this.currentPlayer;
               return this.board[col][i];
             }
@@ -74,7 +78,7 @@ function () {
     }
   }, {
     key: "checkWinCondition",
-    value: function checkWinCondition() {
+    value: function checkWinCondition(point) {
       var victoryCondition = [// vertical inferior
       [[0, 0], [0, 1], [0, 2], [0, 3]], [[1, 0], [1, 1], [1, 2], [1, 3]], [[2, 0], [2, 1], [2, 2], [2, 3]], [[3, 0], [3, 1], [3, 2], [3, 3]], [[4, 0], [4, 1], [4, 2], [4, 3]], [[5, 0], [5, 1], [5, 2], [5, 3]], [[6, 0], [6, 1], [6, 2], [6, 3]], // vertical meio
       [[0, 1], [0, 2], [0, 3], [0, 4]], [[1, 1], [1, 2], [1, 3], [1, 4]], [[2, 1], [2, 2], [2, 3], [2, 4]], [[3, 1], [3, 2], [3, 3], [3, 4]], [[4, 1], [4, 2], [4, 3], [4, 4]], [[5, 1], [5, 2], [5, 3], [5, 4]], [[6, 1], [6, 2], [6, 3], [6, 4]], //vertical superior 
@@ -108,25 +112,49 @@ function () {
       }
 
       if (this.gameOver) {
-        this.points = 10;
+        var scoreP1 = parseInt(scoreLabelP1Element.innerText);
+        var scoreP2 = parseInt(scoreLabelP2Element.innerText);
 
         if (this.currentPlayer === 'Player1') {
+          scoreP1 += this.points;
           chipDecorationElement.classList.remove('color-yellow');
           chipDecorationElement.classList.add('color-red', 'ficha-radius');
+          scoreLabelP1Element.innerText = scoreP1;
         } else {
+          scoreP2 += this.points;
           chipDecorationElement.classList.remove('color-red');
           chipDecorationElement.classList.add('color-yellow', 'ficha-radius');
+          scoreLabelP2Element.innerText = scoreP2;
         }
 
         winningSoundElement.play();
+        this.newTile();
+      }
+    }
+  }, {
+    key: "newTile",
+    value: function newTile() {
+      var _this = this;
 
-        for (var _i = 0; _i < this.board.length; _i++) {
-          for (var j = 0; j < this.board[_i].length; j++) {
-            if (this.board[_i][j]) {//console.log(this.board[i][j],i,j)
+      setTimeout(function () {
+        for (var i = 0; i < _this.allPos.length; i++) {
+          var chip = document.getElementById(_this.allPos[i].toString());
+          chip.classList.remove('color-red', 'color-yellow');
+          chip.classList.remove('ficha-radius', 'bg-info');
+        }
+
+        for (var _i = 0; _i < _this.board.length; _i++) {
+          for (var j = 0; j < _this.board[_i].length; j++) {
+            if (isNaN(_this.board[_i][j])) {
+              var posClear = _this.boardBackUp[_i][j];
+              _this.board[_i][j] = posClear;
             }
           }
         }
-      }
+
+        _this.gameOver = false;
+        _this.posWinin = [];
+      }, 1000);
     }
   }]);
 

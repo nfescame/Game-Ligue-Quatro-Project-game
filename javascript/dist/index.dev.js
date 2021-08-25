@@ -8,19 +8,18 @@ var textElement = document.getElementById('text'); //elemento de audio
 
 var aladdinSoundElement = document.getElementById('aladdin'); // icone de audio, on e off
 
-var OnOffSoundElement = document.getElementById('audioOnOff');
-var scoreLabelP1Element = document.getElementById('scoreLabelP1');
-var scoreLabelP2Element = document.getElementById('scoreLabelP2');
+var OnOffSoundElement = document.getElementById('audioOnOff'); // texto points
+
 var audioOn = false;
 var game = new Game();
 btnPlayElement.addEventListener('click', function (event) {
   aladdinSoundElement.play();
   OnOffSoundElement.addEventListener('click', function (event) {
     if (audioOn) {
-      OnOffSoundElement.setAttribute('src', '/img/mic.svg');
+      OnOffSoundElement.setAttribute('src', '/img/audioOn.jpg');
       aladdinSoundElement.play();
     } else {
-      OnOffSoundElement.setAttribute('src', '/img/mic-off.svg');
+      OnOffSoundElement.setAttribute('src', '/img/audioOff.png');
       aladdinSoundElement.pause();
     }
 
@@ -28,7 +27,6 @@ btnPlayElement.addEventListener('click', function (event) {
   });
   document.addEventListener('click', function (event) {
     if (event.target.parentElement.classList.contains('container-col')) {
-      var textWin = '';
       var colSelect = event.target.parentElement.id; //pega o id da coluna clicada 
 
       var idCol = colSelect.substr(-1, 1); //retira apenas o numero da id 
@@ -39,14 +37,13 @@ btnPlayElement.addEventListener('click', function (event) {
         game.printChip(); // spawn chip 
 
         game.checkWinCondition();
+        textElement.innerText = 'NEXT PLAYER';
       }
 
       game.posWinin.map(function (pos) {
         var posTile = document.getElementById(pos.toString());
         posTile.classList.add('bg-info', 'ficha-radius');
-        console.log(textWin);
         textElement.innerText = game.textWin;
-        console.log(game.points);
       });
     }
   });

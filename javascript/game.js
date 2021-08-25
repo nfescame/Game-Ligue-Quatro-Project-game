@@ -1,10 +1,14 @@
 let chipDecorationElement = document.getElementById('dec')
 let winningSoundElement = document.getElementById('wininngSound')
 
+let scoreLabelP1Element = document.getElementById('scoreP1')
+let scoreLabelP2Element = document.getElementById('scoreP2')
+
 class Game{
     constructor(){
-        this.points = 0
+        this.points = 10
         this.posWinin = []
+        this.allPos = []
         this.textWin = ''
         this.lin
         this.gameOver = false;
@@ -52,6 +56,7 @@ class Game{
                     if(!isNaN(this.board[i][j])){
                         
                         this.lin = this.board[i][j]
+                        this.allPos.push(this.board[i][j])
                         this.board[i][j] = this.currentPlayer
                         return this.board[col][i] 
                     }
@@ -79,7 +84,7 @@ class Game{
         
 
     }
-    checkWinCondition() {
+    checkWinCondition(point) {
         const victoryCondition = [
             // vertical inferior
             [[0,0],[0,1],[0,2],[0,3]],
@@ -217,27 +222,52 @@ class Game{
         }
 
         if(this.gameOver){
-
-            this.points = 10
-
+            let scoreP1 = parseInt(scoreLabelP1Element.innerText)
+            let scoreP2 = parseInt(scoreLabelP2Element.innerText)
+            
             if(this.currentPlayer === 'Player1'){
+                scoreP1 += this.points
                 chipDecorationElement.classList.remove('color-yellow')
                 chipDecorationElement.classList.add('color-red','ficha-radius')
+                scoreLabelP1Element.innerText = scoreP1
             }else{
+                scoreP2 += this.points
                 chipDecorationElement.classList.remove('color-red')
                 chipDecorationElement.classList.add('color-yellow','ficha-radius')
+                scoreLabelP2Element.innerText = scoreP2
             }
             winningSoundElement.play()
-
-            for(let i = 0; i < this.board.length; i++){
-                for(let j = 0 ; j < this.board[i].length; j++){
-                    if(this.board[i][j]){
-                        //console.log(this.board[i][j],i,j)
-                    }
-                }
-            }
+            this.newTile()
+              
         }
     }
-    
+    newTile(){
+
+        setTimeout(() => {
+            for(let i = 0; i < this.allPos.length; i++){
+            
+                const chip = document.getElementById(this.allPos[i].toString())
+                chip.classList.remove('color-red','color-yellow')
+                chip.classList.remove('ficha-radius','bg-info')
+            }
+            for(let i = 0; i < this.board.length; i++){
+                for(let j = 0; j < this.board[i].length; j++){
+                    if(isNaN(this.board[i][j])){
+                        let posClear = this.boardBackUp[i][j]
+                        this.board[i][j] = posClear
+                    }         
+                }
+            }
+            this.gameOver = false
+            this.posWinin = []
+            
+        }, 1000);
+
+        
+
+    }
+
+
+
 }
 

@@ -125,8 +125,11 @@ h1{
     display: flex;
     justify-content: space-between;
 }
-.audio{
-    margin: 0 50px;
+.BoxAudio{
+    margin: 0 25px 0 50px;
+}
+#audioOnOff{
+    width: 50px;
 }
 .box-score{
     border: 4px solid steelblue;
@@ -143,6 +146,10 @@ h1{
 .scoreLabelP2{
     color: darkgoldenrod;
     font-size: 27px;
+}
+.poits{
+    font-size: 40px;
+    color: navy;
 }
 
 
