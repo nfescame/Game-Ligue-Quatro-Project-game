@@ -16,11 +16,11 @@ var game = new Game();
 function toogleAudio() {
   if (audioOn) {
     //verifica se o audio é verdadeiro 
-    OnOffSoundElement.setAttribute('src', '/img/audioOn.jpg'); //altera a imagem do icone de audio 
+    OnOffSoundElement.setAttribute('src', './img/audioOn.jpg'); //altera a imagem do icone de audio 
 
     aladdinSoundElement.play(); // inicia a reprodução do audio 
   } else {
-    OnOffSoundElement.setAttribute('src', '/img/audioOff.png'); //altera a imagem do icone de audio 
+    OnOffSoundElement.setAttribute('src', './img/audioOff.png'); //altera a imagem do icone de audio 
 
     aladdinSoundElement.pause(); // inicia a reprodução do audio 
   }
