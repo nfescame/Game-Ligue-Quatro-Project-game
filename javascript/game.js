@@ -1,18 +1,24 @@
+// elemento decorativo 
 let chipDecorationElement = document.getElementById('dec')
+
+// elemento sonoro de vitoria
 let winningSoundElement = document.getElementById('wininngSound')
 
-let scoreLabelP1Element = document.getElementById('scoreP1')
-let scoreLabelP2Element = document.getElementById('scoreP2')
+//elementos de texto para score 
+let scoreLabelP1Element = document.getElementById('scoreP1')//player 1
+let scoreLabelP2Element = document.getElementById('scoreP2')//player 2
 
 class Game{
     constructor(){
-        this.points = 10
-        this.posWinin = []
-        this.allPos = []
-        this.textWin = ''
-        this.lin
-        this.gameOver = false;
-        this.currentPlayer = ''
+        this.points = 10 //valor de pontos para cada vitoria
+        this.posWinin = [] // guarda as posições vencedoras de uma partida 
+        this.allPos = [] // guarda todas as posições jogadas durante uma partida 
+        this.textWin = '' // recebe o texto com o player vencedor 
+        this.lin // guarda a jogada atual pra alteração das classes das fichas 
+        this.gameOver = false; //inicia o jogo como game over falso 
+        this.currentPlayer = '' //guarda o player atual 
+
+        // tabuleiro que recebe todas as alteração para conferencia 
         this.board = [
             [0,1,2,3,4,5],
             [6,7,8,9,10,11],
@@ -22,6 +28,7 @@ class Game{
             [30,31,32,33,34,35],
             [36,37,38,39,40,41]
       ];
+      //tabuleiro que guarda as informações originais para conferencia 
         this.boardBackUp = [
             [0,1,2,3,4,5],
             [6,7,8,9,10,11],
@@ -33,17 +40,19 @@ class Game{
        ];
     }
 
+    //verifica qual é o player atual 
     nextPlayer(){
         if(this.currentPlayer === 'Player1'){
-            this.currentPlayer = 'Player2'
+            this.currentPlayer = 'Player2'//troca o player atual 
             return 'Player2'
         }else{
-            this.currentPlayer = 'Player1'
+            this.currentPlayer = 'Player1'//troca o player atual
             return 'Player1'
         }
         
     }
 
+    //recebe a coluna que foi clicada e altera a posição do tabuleiro para player atual 
     fillTile(col){
         this.nextPlayer()
         
@@ -51,31 +60,31 @@ class Game{
 
             if(this.board[i] === this.board[col]){ //entra na coluna
             
-                for(let j = 0 ; j < this.board[i].length; j++){
+                for(let j = 0 ; j < this.board[i].length; j++){ //varre a coluna 
 
-                    if(!isNaN(this.board[i][j])){
+                    if(!isNaN(this.board[i][j])){ //verifica se não é uma string (player1 ou player2)
                         
-                        this.lin = this.board[i][j]
-                        this.allPos.push(this.board[i][j])
-                        this.board[i][j] = this.currentPlayer
-                        return this.board[col][i] 
+                        this.lin = this.board[i][j] //lin recebe a posição da ultima jogada 
+                        this.allPos.push(this.board[i][j]) // allPos guarda as posições de cada jogada  
+                        this.board[i][j] = this.currentPlayer //bord recebe o player atual na posição encontrada
+                        return this.board[col][i] //retorna o valor
                     }
                     
                 }
                 
             }
         }
-
-        this.nextPlayer() 
+        this.nextPlayer() // busca o proximo jogador 
     }
     
+    //preenche as classes para alterar as cores (vermelho ou amarelo) nos tiles clicados 
     printChip(){
         
-        const chip = document.getElementById(this.lin)
-        if(this.currentPlayer === 'Player1'){
-            chip.classList.add('color-red')
-            chipDecorationElement.classList.remove('color-red')
-            chipDecorationElement.classList.add('color-yellow')
+        const chip = document.getElementById(this.lin) // identifica qual elemento deve ser alterado 
+        if(this.currentPlayer === 'Player1'){ //verifica qual jogador fez a jogada 
+            chip.classList.add('color-red') // adiciona a classe para vermelho(player 1)
+            chipDecorationElement.classList.remove('color-red') // remove a classe vermelha do elemento decoratico
+            chipDecorationElement.classList.add('color-yellow') //adiciona a classe amarelo do proximo jogador
         }else{
             chip.classList.add('color-yellow')
             chipDecorationElement.classList.remove('color-yellow')
@@ -84,7 +93,11 @@ class Game{
         
 
     }
+
+    //checa se houve algum vencedor a cada jogada 
     checkWinCondition(point) {
+
+        // arrays que armazenam todas as condição de vitoria 
         const victoryCondition = [
             // vertical inferior
             [[0,0],[0,1],[0,2],[0,3]],
@@ -199,34 +212,36 @@ class Game{
              
         ]
         
-        for(let i = 0; i < victoryCondition.length; i++){
+        for(let i = 0; i < victoryCondition.length; i++){ // vare as condições de vitoria a cada interação 
 
           const coord1 = victoryCondition[i][0]
           const coord2 = victoryCondition[i][1]
           const coord3 = victoryCondition[i][2]
           const coord4 = victoryCondition[i][3]
 
-         
-          
+          // compara se algum player esta sequencial em 4 (comparando um com o outro)
           if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] &&
             this.board[coord2[0]][coord2[1]] === this.board[coord3[0]][coord3[1]] &&
             this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]){
 
                 
-                this.textWin = `${this.currentPlayer} Win.`
+                this.textWin = `${this.currentPlayer} Win.` //textWin recebe texto com o vencedor 
+                // posWin recebe as posições vencedoras 
                 this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]],this.boardBackUp[coord3[0]][coord3[1]],this.boardBackUp[coord4[0]][coord4[1]]]
-                this.gameOver = true
+                this.gameOver = true // altera o game over para verdadeiro 
 
             }
             
         }
 
+        //verifica se game over é verdadeiro 
         if(this.gameOver){
+            //identifica os elementos que recebem os scores
             let scoreP1 = parseInt(scoreLabelP1Element.innerText)
             let scoreP2 = parseInt(scoreLabelP2Element.innerText)
             
-            if(this.currentPlayer === 'Player1'){
-                scoreP1 += this.points
+            if(this.currentPlayer === 'Player1'){ // verifica que ganhou (quem fez a ultima jogada antes do game over )
+                scoreP1 += this.points 
                 chipDecorationElement.classList.remove('color-yellow')
                 chipDecorationElement.classList.add('color-red','ficha-radius')
                 scoreLabelP1Element.innerText = scoreP1

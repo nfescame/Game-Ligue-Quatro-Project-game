@@ -19,6 +19,10 @@ header{
     justify-content: center;
     align-items: center;
 }
+ul{
+    color: floralwhite;
+    font-size: 19px;
+}
 
 .title{
     text-shadow: #000 15px 10px 7px;
