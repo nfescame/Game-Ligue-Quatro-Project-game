@@ -48,7 +48,7 @@ h1{
     
 }
 .ficha{
-    background-image: url('./img/poker-chips-set.png');
+    background-image: url('/img/poker-chips-set.png');
     background-repeat: repeat-y;
     height: 100px;
     width: 100px;
@@ -68,7 +68,7 @@ h1{
     background-position: 0px 100px;
 }
 #container {
-    background-image: url('./img/tile.png');
+    background-image: url('/img/tile.png');
     background-repeat: repeat-y;
     background-size: 700px 600px;
     position: relative;
