@@ -1,5 +1,6 @@
 let chipDecorationElement = document.getElementById('dec')
-
+let winningSoundElement = document.getElementById('wininngSound')
+let playSoundElement = document.getElementById('playSound')
 class Game{
     constructor(){
         this.posWinin = []
@@ -30,9 +31,11 @@ class Game{
     nextPlayer(){
         if(this.currentPlayer === 'Player1'){
             this.currentPlayer = 'Player2'
+            playSoundElement.play()
             return 'Player2'
         }else{
             this.currentPlayer = 'Player1'
+            playSoundElement.play()
             return 'Player1'
         }
         
@@ -217,25 +220,20 @@ class Game{
                 this.gameOver = true
 
             }
-
-
-            if(this.gameOver){
-
-                if(this.currentPlayer === 'Player1'){
-                    console.log('ok')
-                    chipDecorationElement.classList.remove('color-yellow')
-                    chipDecorationElement.classList.add('color-red','ficha-radius')
-                }else{
-                    chipDecorationElement.classList.remove('color-red')
-                    chipDecorationElement.classList.add('color-yellow','ficha-radius')
-                }
-            }
-
-
             
         }
-      
-    }
-      
+
+        if(this.gameOver){
+           
+            if(this.currentPlayer === 'Player1'){
+                chipDecorationElement.classList.remove('color-yellow')
+                chipDecorationElement.classList.add('color-red','ficha-radius')
+            }else{
+                chipDecorationElement.classList.remove('color-red')
+                chipDecorationElement.classList.add('color-yellow','ficha-radius')
+            }
+            winningSoundElement.play()
+        }
+    }   
 }
 

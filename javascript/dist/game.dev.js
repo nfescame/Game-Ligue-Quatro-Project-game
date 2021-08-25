@@ -7,6 +7,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var chipDecorationElement = document.getElementById('dec');
+var winningSoundElement = document.getElementById('wininngSound');
+var playSoundElement = document.getElementById('playSound');
 
 var Game =
 /*#__PURE__*/
@@ -28,9 +30,11 @@ function () {
     value: function nextPlayer() {
       if (this.currentPlayer === 'Player1') {
         this.currentPlayer = 'Player2';
+        playSoundElement.play();
         return 'Player2';
       } else {
         this.currentPlayer = 'Player1';
+        playSoundElement.play();
         return 'Player1';
       }
     }
@@ -103,17 +107,18 @@ function () {
           this.posWinin = [this.boardBackUp[coord1[0]][coord1[1]], this.boardBackUp[coord2[0]][coord2[1]], this.boardBackUp[coord3[0]][coord3[1]], this.boardBackUp[coord4[0]][coord4[1]]];
           this.gameOver = true;
         }
+      }
 
-        if (this.gameOver) {
-          if (this.currentPlayer === 'Player1') {
-            console.log('ok');
-            chipDecorationElement.classList.remove('color-yellow');
-            chipDecorationElement.classList.add('color-red', 'ficha-radius');
-          } else {
-            chipDecorationElement.classList.remove('color-red');
-            chipDecorationElement.classList.add('color-yellow', 'ficha-radius');
-          }
+      if (this.gameOver) {
+        if (this.currentPlayer === 'Player1') {
+          chipDecorationElement.classList.remove('color-yellow');
+          chipDecorationElement.classList.add('color-red', 'ficha-radius');
+        } else {
+          chipDecorationElement.classList.remove('color-red');
+          chipDecorationElement.classList.add('color-yellow', 'ficha-radius');
         }
+
+        winningSoundElement.play();
       }
     }
   }]);

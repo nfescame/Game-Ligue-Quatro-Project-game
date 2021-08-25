@@ -1,8 +1,23 @@
-let btnResetElement = document.getElementById('reset')
-let textElement = document.getElementById('text')
-
+let btnResetElement = document.getElementById('reset');
+let textElement = document.getElementById('text');
+let aladdinSoundElement = document.getElementById('aladdin');
+let OnOffSoundElement = document.getElementById('audioOnOff');
+let audioOn = true;
 
 const game = new Game();
+
+
+OnOffSoundElement.addEventListener('click', (event) =>{
+    if (audioOn){
+        OnOffSoundElement.setAttribute('src', '/img/mic.svg');
+        aladdinSoundElement.play();
+    }else{
+        OnOffSoundElement.setAttribute('src', '/img/mic-off.svg');
+        aladdinSoundElement.pause();
+    }
+    audioOn = !audioOn
+    
+})
 
 document.addEventListener('click', (event) => {
     
@@ -22,12 +37,8 @@ document.addEventListener('click', (event) => {
             posTile.classList.add('bg-info','ficha-radius')
             console.log(textWin)
             textElement.innerText = game.textWin
-            
         })
-       
     }
-
- 
 });
 
 
