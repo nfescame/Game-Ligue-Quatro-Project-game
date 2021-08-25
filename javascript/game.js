@@ -1,8 +1,9 @@
 let chipDecorationElement = document.getElementById('dec')
 let winningSoundElement = document.getElementById('wininngSound')
-let playSoundElement = document.getElementById('playSound')
+
 class Game{
     constructor(){
+        this.points = 0
         this.posWinin = []
         this.textWin = ''
         this.lin
@@ -31,11 +32,9 @@ class Game{
     nextPlayer(){
         if(this.currentPlayer === 'Player1'){
             this.currentPlayer = 'Player2'
-            playSoundElement.play()
             return 'Player2'
         }else{
             this.currentPlayer = 'Player1'
-            playSoundElement.play()
             return 'Player1'
         }
         
@@ -114,42 +113,36 @@ class Game{
             [[1,0],[2,0],[3,0],[4,0]],
             [[2,0],[3,0],[4,0],[5,0]],
             [[3,0],[4,0],[5,0],[6,0]],
-            [[4,0],[5,0],[6,0],[7,0]],
-
+            
             // horizontal linha 2
             [[0,1],[1,1],[2,1],[3,1]],
             [[1,1],[2,1],[3,1],[4,1]],
             [[2,1],[3,1],[4,1],[5,1]],
             [[3,1],[4,1],[5,1],[6,1]],
-            [[4,1],[5,1],[6,1],[7,1]],
 
             //horizontal linha 3
             [[0,2],[1,2],[2,2],[3,2]],
             [[1,2],[2,2],[3,2],[4,2]],
             [[2,2],[3,2],[4,2],[5,2]],
             [[3,2],[4,2],[5,2],[6,2]],
-            [[4,2],[5,2],[6,2],[7,2]],
 
              //horizontal linha 4
             [[0,3],[1,3],[2,3],[3,3]],
             [[1,3],[2,3],[3,3],[4,3]],
             [[2,3],[3,3],[4,3],[5,3]],
             [[3,3],[4,3],[5,3],[6,3]],
-            [[4,3],[5,3],[6,3],[7,3]],
 
             //horizontal linha 5
             [[0,4],[1,4],[2,4],[3,4]],
             [[1,4],[2,4],[3,4],[4,4]],
             [[2,4],[3,4],[4,4],[5,4]],
             [[3,4],[4,4],[5,4],[6,4]],
-            [[4,4],[5,4],[6,4],[7,4]],
 
             //horizontal linha 6
             [[0,5],[1,5],[2,5],[3,5]],
             [[1,5],[2,5],[3,5],[4,5]],
             [[2,5],[3,5],[4,5],[5,5]],
             [[3,5],[4,5],[5,5],[6,5]],
-            [[4,5],[5,5],[6,5],[7,5]],
 
             //diagonal esquerda 1 
             [[6,0],[5,1],[4,2],[3,3]],
@@ -224,7 +217,9 @@ class Game{
         }
 
         if(this.gameOver){
-           
+
+            this.points = 10
+
             if(this.currentPlayer === 'Player1'){
                 chipDecorationElement.classList.remove('color-yellow')
                 chipDecorationElement.classList.add('color-red','ficha-radius')
@@ -233,7 +228,16 @@ class Game{
                 chipDecorationElement.classList.add('color-yellow','ficha-radius')
             }
             winningSoundElement.play()
+
+            for(let i = 0; i < this.board.length; i++){
+                for(let j = 0 ; j < this.board[i].length; j++){
+                    if(this.board[i][j]){
+                        //console.log(this.board[i][j],i,j)
+                    }
+                }
+            }
         }
-    }   
+    }
+    
 }
 
