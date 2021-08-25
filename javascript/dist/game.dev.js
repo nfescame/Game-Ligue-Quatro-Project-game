@@ -21,6 +21,7 @@ function () {
   function Game() {
     _classCallCheck(this, Game);
 
+    this.fullTiles = false;
     this.points = 10; //valor de pontos para cada vitoria
 
     this.posWinin = []; // guarda as posições vencedoras de uma partida 

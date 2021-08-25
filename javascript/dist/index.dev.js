@@ -30,6 +30,7 @@ function toogleAudio() {
 
 btnPlayElement.addEventListener('click', function (event) {
   //botão play libera o tabuleiro para jogo 
+  toogleAudio();
   OnOffSoundElement.addEventListener('click', function (event) {
     //click na image do audio 
     toogleAudio(); //invoca a função de verificação de audio 
@@ -40,8 +41,7 @@ btnPlayElement.addEventListener('click', function (event) {
     play = false; // nao iniciar uma nova jogada com uma acontecendo 
 
     document.addEventListener('click', function (event) {
-      console.log('ok'); // verifica de o event click foi em uma coluna 
-
+      // verifica de o event click foi em uma coluna 
       if (event.target.parentElement.classList.contains('container-col')) {
         //pega o id da coluna que foi clicada
         var colSelect = event.target.parentElement.id; //pega o id da coluna clicada 

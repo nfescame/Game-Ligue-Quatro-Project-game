@@ -10,6 +10,7 @@ let scoreLabelP2Element = document.getElementById('scoreP2')//player 2
 
 class Game{
     constructor(){
+        this.fullTiles = false
         this.points = 10 //valor de pontos para cada vitoria
         this.posWinin = [] // guarda as posições vencedoras de uma partida 
         this.allPos = [] // guarda todas as posições jogadas durante uma partida 
@@ -232,6 +233,7 @@ class Game{
 
             }
             
+            
         }
 
         //verifica se game over é verdadeiro 
@@ -265,24 +267,23 @@ class Game{
                 chip.classList.remove('color-red','color-yellow')
                 chip.classList.remove('ficha-radius','bg-info')
             }
+    
             for(let i = 0; i < this.board.length; i++){
                 for(let j = 0; j < this.board[i].length; j++){
                     if(isNaN(this.board[i][j])){
                         let posClear = this.boardBackUp[i][j]
                         this.board[i][j] = posClear
-                    }         
+                    } 
                 }
             }
+
             this.gameOver = false
             this.posWinin = []
             
         }, 1000);
 
-        
-
     }
-
-
+    
 
 }
 
