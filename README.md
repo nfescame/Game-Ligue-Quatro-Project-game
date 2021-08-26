@@ -12,7 +12,8 @@ I'm a web development fan excited about new knowledge.
 https://nfescame.github.io/Ligue-QuatroProject-game/
 
 # Find out more about this project
-https://docs.google.com/presentation/d/1dE5nmewAGaxfc3cO9aKH4HoeEHeK0_F0tFhnhGvSlNM/edit?usp=sharing
+[Flex Grid](https://docs.google.com/presentation/d/1dE5nmewAGaxfc3cO9aKH4HoeEHeK0_F0tFhnhGvSlNM/edit?usp=sharing)
+
 
 # Contributing
 
