@@ -1,2 +1,16 @@
-# Ligue-Quatro Project-game
+# Lig4 Game
 week-project-game 
+
+# About the game
+this design simulates a popular toy from the 80s. The objective is to line up 4 tiles of your color. It can be horizontally, vertically or diagonally. - Were you the first to line up 4 chips??? Congratulations! You won!
+I applied the knowledge gained in the first weeks of ironhack's bootcamp web development.
+
+# About the Developer
+I'm a web development fan excited about new knowledge.
+
+# Play now!
+https://nfescame.github.io/Ligue-QuatroProject-game/
+
+# Find out more about this project
+https://docs.google.com/presentation/d/1dE5nmewAGaxfc3cO9aKH4HoeEHeK0_F0tFhnhGvSlNM/edit?usp=sharing
+
