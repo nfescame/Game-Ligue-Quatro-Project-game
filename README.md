@@ -9,7 +9,7 @@ I applied the knowledge gained in the first weeks of ironhack's bootcamp web dev
 I'm a web development fan excited about new knowledge.
 
 ## Play now!
-Click(https://nfescame.github.io/Ligue-QuatroProject-game/) for play.
+[Click](https://nfescame.github.io/Ligue-QuatroProject-game/) for play.
 
 
 ## Find out more about this project
