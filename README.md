@@ -13,7 +13,7 @@ I'm a web development fan excited about new knowledge.
 
 
 ## Find out more about this project
-(https://docs.google.com/presentation/d/1dE5nmewAGaxfc3cO9aKH4HoeEHeK0_F0tFhnhGvSlNM/edit?usp=sharing)
+[Click](https://docs.google.com/presentation/d/1dE5nmewAGaxfc3cO9aKH4HoeEHeK0_F0tFhnhGvSlNM/edit?usp=sharing)
 
 
 ## Contributing
