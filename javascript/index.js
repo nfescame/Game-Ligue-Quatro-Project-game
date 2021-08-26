@@ -15,24 +15,9 @@ let audioOn = true;// seta o audio em verdadeiro como inicial
 
 const game = new Game();
 
-function toogleAudio(){
-    if (audioOn){//verifica se o audio é verdadeiro 
-        OnOffSoundElement.setAttribute('src', './img/audioOn.jpg');//altera a imagem do icone de audio 
-        aladdinSoundElement.play(); // inicia a reprodução do audio 
-    }else{
-        OnOffSoundElement.setAttribute('src', './img/audioOff.png');//altera a imagem do icone de audio 
-        aladdinSoundElement.pause();// inicia a reprodução do audio 
-    }
-    audioOn = !audioOn // inverte o valor apos a verificação
-}
-
 
 btnPlayElement.addEventListener('click', (event) =>{//botão play libera o tabuleiro para jogo 
     toogleAudio()
-    OnOffSoundElement.addEventListener('click', (event) =>{//click na image do audio 
-        toogleAudio()//invoca a função de verificação de audio 
-    })
-
     if(play){ //verifica se pode jogar 
         play = false // nao iniciar uma nova jogada com uma acontecendo 
 
@@ -70,6 +55,26 @@ btnPlayElement.addEventListener('click', (event) =>{//botão play libera o tabul
     });
 
 })
+
+OnOffSoundElement.addEventListener('click', (event) =>{//click na image do audio 
+    toogleAudio()//invoca a função de verificação de audio 
+})
+
+function toogleAudio(){
+
+    if (audioOn){//verifica se o audio é verdadeiro 
+        OnOffSoundElement.setAttribute('src', './img/audioOn.jpg');//altera a imagem do icone de audio 
+        aladdinSoundElement.play(); // inicia a reprodução do audio 
+    }else{
+        OnOffSoundElement.setAttribute('src', './img/audioOff.png');//altera a imagem do icone de audio 
+        aladdinSoundElement.pause();// inicia a reprodução do audio 
+    }
+    audioOn = !audioOn // inverte o valor apos a verificação
+}
+
+
+
+
 
 
 
