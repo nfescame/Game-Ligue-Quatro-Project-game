@@ -9,7 +9,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // elemento decorativo 
 var chipDecorationElement = document.getElementById('dec'); // elemento sonoro de vitoria
 
-var winningSoundElement = document.getElementById('wininngSound'); //elementos de texto para score 
+var winningSoundElement = document.getElementById('wininngSound');
+var drawSoundElement = document.getElementById('drawSound'); //elementos de texto para score 
 
 var scoreLabelP1Element = document.getElementById('scoreP1'); //player 1
 
@@ -21,6 +22,7 @@ function () {
   function Game() {
     _classCallCheck(this, Game);
 
+    this.draw = false;
     this.fullTiles = false;
     this.points = 10; //valor de pontos para cada vitoria
 
@@ -165,6 +167,8 @@ function () {
         winningSoundElement.play();
         this.newTile();
       }
+
+      this.checkDraw();
     }
   }, {
     key: "newTile",
@@ -187,9 +191,18 @@ function () {
           }
         }
 
+        _this.allPos = [];
         _this.gameOver = false;
         _this.posWinin = [];
       }, 1000);
+    }
+  }, {
+    key: "checkDraw",
+    value: function checkDraw() {
+      if (this.allPos.length >= 42) {
+        drawSoundElement.play();
+        this.newTile();
+      }
     }
   }]);
 

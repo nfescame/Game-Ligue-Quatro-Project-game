@@ -3,6 +3,7 @@ let chipDecorationElement = document.getElementById('dec')
 
 // elemento sonoro de vitoria
 let winningSoundElement = document.getElementById('wininngSound')
+let drawSoundElement = document.getElementById('drawSound')
 
 //elementos de texto para score 
 let scoreLabelP1Element = document.getElementById('scoreP1')//player 1
@@ -10,6 +11,7 @@ let scoreLabelP2Element = document.getElementById('scoreP2')//player 2
 
 class Game{
     constructor(){
+        this.draw = false
         this.fullTiles = false
         this.points = 10 //valor de pontos para cada vitoria
         this.posWinin = [] // guarda as posições vencedoras de uma partida 
@@ -57,6 +59,7 @@ class Game{
     fillTile(col){
         this.nextPlayer()
         
+        
         for(let i = 0; i < this.board.length; i++){ //varre o array pai
 
             if(this.board[i] === this.board[col]){ //entra na coluna
@@ -69,7 +72,7 @@ class Game{
                         this.allPos.push(this.board[i][j]) // allPos guarda as posições de cada jogada  
                         this.board[i][j] = this.currentPlayer //bord recebe o player atual na posição encontrada
                         return this.board[col][i] //retorna o valor
-                    }
+                    } 
                     
                 }
                 
@@ -97,7 +100,7 @@ class Game{
 
     //checa se houve algum vencedor a cada jogada 
     checkWinCondition(point) {
-
+        
         // arrays que armazenam todas as condição de vitoria 
         const victoryCondition = [
             // vertical inferior
@@ -215,16 +218,15 @@ class Game{
         
         for(let i = 0; i < victoryCondition.length; i++){ // vare as condições de vitoria a cada interação 
 
-          const coord1 = victoryCondition[i][0]
-          const coord2 = victoryCondition[i][1]
-          const coord3 = victoryCondition[i][2]
-          const coord4 = victoryCondition[i][3]
-
-          // compara se algum player esta sequencial em 4 (comparando um com o outro)
-          if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] &&
+            const coord1 = victoryCondition[i][0]
+            const coord2 = victoryCondition[i][1]
+            const coord3 = victoryCondition[i][2]
+            const coord4 = victoryCondition[i][3]
+        
+            // compara se algum player esta sequencial em 4 (comparando um com o outro)
+            if (this.board[coord1[0]][coord1[1]] === this.board[coord2[0]][coord2[1]] &&
             this.board[coord2[0]][coord2[1]] === this.board[coord3[0]][coord3[1]] &&
             this.board[coord3[0]][coord3[1]] === this.board[coord4[0]][coord4[1]]){
-
                 
                 this.textWin = `${this.currentPlayer} Win.` //textWin recebe texto com o vencedor 
                 // posWin recebe as posições vencedoras 
@@ -233,30 +235,30 @@ class Game{
 
             }
             
-            
         }
-
+        
         //verifica se game over é verdadeiro 
         if(this.gameOver){
             //identifica os elementos que recebem os scores
-            let scoreP1 = parseInt(scoreLabelP1Element.innerText)
-            let scoreP2 = parseInt(scoreLabelP2Element.innerText)
+            let scoreP1 = parseInt(scoreLabelP1Element.innerText);
+            let scoreP2 = parseInt(scoreLabelP2Element.innerText);
             
             if(this.currentPlayer === 'Player1'){ // verifica que ganhou (quem fez a ultima jogada antes do game over )
-                scoreP1 += this.points 
-                chipDecorationElement.classList.remove('color-yellow')
-                chipDecorationElement.classList.add('color-red','ficha-radius')
-                scoreLabelP1Element.innerText = scoreP1
+                scoreP1 += this.points ;
+                chipDecorationElement.classList.remove('color-yellow');
+                chipDecorationElement.classList.add('color-red','ficha-radius');
+                scoreLabelP1Element.innerText = scoreP1;
             }else{
                 scoreP2 += this.points
-                chipDecorationElement.classList.remove('color-red')
-                chipDecorationElement.classList.add('color-yellow','ficha-radius')
-                scoreLabelP2Element.innerText = scoreP2
+                chipDecorationElement.classList.remove('color-red');
+                chipDecorationElement.classList.add('color-yellow','ficha-radius');
+                scoreLabelP2Element.innerText = scoreP2;
             }
-            winningSoundElement.play()
-            this.newTile()
+            winningSoundElement.play();
+            this.newTile();
               
         }
+        this.checkDraw();
     }
     newTile(){
 
@@ -276,7 +278,7 @@ class Game{
                     } 
                 }
             }
-
+            this.allPos = []
             this.gameOver = false
             this.posWinin = []
             
@@ -284,6 +286,13 @@ class Game{
 
     }
     
+    checkDraw(){
+        
+        if(this.allPos.length >= 42){
+            drawSoundElement.play()
+            this.newTile()
+        }
+    }
 
 }
 
