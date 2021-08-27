@@ -5,8 +5,14 @@
     font-family: 'Source Code Pro', monospace
 }
 body{
+    
     max-width: 100vw;
     padding: 0 50px;
+}
+.bg-body{
+    background-image: url('../img/555361.jpg');
+    background-size: 700px 600px;
+
 }
 
 .logotipo{
@@ -38,8 +44,9 @@ h1{
 }
 
 .windows{
+    
     display: flex;
-    padding: 50px 50px 0 0;
+    padding: 20px 50px 0 0;
 }
 .panel {
     display: flex;
@@ -73,7 +80,7 @@ h1{
     background-repeat: repeat-y;
     background-size: 700px 600px;
     position: relative;
-    margin:-10px 50px;
+    margin: 0px 36px;
     box-shadow: 30px 30px 20px rgb(0 0 0 / 50%);
 }
 .container-col{
@@ -98,8 +105,8 @@ h1{
     background-color: steelblue;
     display: flex;
     flex-direction: column;
-    margin: 50px;
-    width: 260px;
+    margin: 50px 0;
+    width: 275px;
     box-shadow: 30px 30px 20px rgb(0 0 0 / 50%);
 }
 
@@ -127,7 +134,8 @@ h1{
     justify-content: space-between;
 }
 .BoxAudio{
-    margin: 0 25px 0 50px;
+    
+    margin: 0 25px 0 0;
 }
 #audioOnOff{
     width: 50px;
