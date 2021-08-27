@@ -18,6 +18,7 @@ const game = new Game();
 
 btnPlayElement.addEventListener('click', (event) =>{//botão play libera o tabuleiro para jogo 
     toogleAudio()
+    textElement.innerText = 'NEXT PLAYER'//texto para iniciar jogada 
     if(play){ //verifica se pode jogar 
         play = false // nao iniciar uma nova jogada com uma acontecendo 
 
