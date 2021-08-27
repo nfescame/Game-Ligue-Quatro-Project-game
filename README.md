@@ -18,7 +18,7 @@ I'm a web development fan excited about new knowledge.
 
 ## Contributing
 
-|This is a free software, feel free to contribute in any way you want
+This is a free software, feel free to contribute in any way you want
 
 1.Fork it(https://github.com/nfescame/Ligue-QuatroProject-game) \
 2.Create your feature branch (git checkout -b feature/fooBar)\
