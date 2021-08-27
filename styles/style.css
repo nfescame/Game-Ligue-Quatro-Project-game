@@ -102,6 +102,7 @@ h1{
 }
 
 .next{
+    
     background-color: steelblue;
     display: flex;
     flex-direction: column;
