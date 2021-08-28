@@ -21,9 +21,7 @@ body{
     margin: 15px 50px;
     border: 5px solid aliceblue;
 }
-header{
-    background-color: steelblue;
-}
+
 a{
     font-size: 50px;
     text-decoration: none;
@@ -102,14 +100,11 @@ h1{
 }
 
 .next{
-    
-    background-color: steelblue;
     display: flex;
     flex-direction: column;
     margin: 50px 0;
     border-radius: 50%;
     width: 275px;
-    box-shadow: 30px 30px 20px rgb(0 0 0 / 50%);
 }
 
 #dec{
@@ -118,15 +113,11 @@ h1{
 .btn-primary{
     margin-right: 10px;
 }
-
 .text {
-    box-shadow: 5px 5px 100px rgba(0,0,0,0.5);
-    text-shadow: #000 5px 7px 4px;
     text-align: center;
     font-size: 50px;
     height: 180px;
     color:white;
-    
 }
 .audioOnOff{
     top: 0px;
@@ -162,8 +153,4 @@ h1{
     font-size: 40px;
     color: navy;
 }
-
-
-
-
 
