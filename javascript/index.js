@@ -62,12 +62,12 @@ OnOffSoundElement.addEventListener('click', (event) =>{//click na image do audio
 })
 
 function toogleAudio(){
-
+    
     if (audioOn){//verifica se o audio é verdadeiro 
-        OnOffSoundElement.setAttribute('src', './img/audioOn.jpg');//altera a imagem do icone de audio 
+        OnOffSoundElement.setAttribute('src', './img/on.svg');//altera a imagem do icone de audio 
         aladdinSoundElement.play(); // inicia a reprodução do audio 
     }else{
-        OnOffSoundElement.setAttribute('src', './img/audioOff.png');//altera a imagem do icone de audio 
+        OnOffSoundElement.setAttribute('src', './img/off.svg');//altera a imagem do icone de audio 
         aladdinSoundElement.pause();// inicia a reprodução do audio 
     }
     audioOn = !audioOn // inverte o valor apos a verificação

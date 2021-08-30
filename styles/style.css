@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: 'Source Code Pro', monospace
+    font-family: 'VT323', monospace;
 }
 body{
     
@@ -10,8 +10,8 @@ body{
     padding: 0 50px;
 }
 .bg-body{
-    background-image: url('../img/555361.jpg');
-    background-size: 700px 600px;
+    background-image: url('../img/cubeBackground.jpg');
+    background-size: 100%
 
 }
 
@@ -127,7 +127,8 @@ h1{
     justify-content: space-between;
 }
 .BoxAudio{
-    
+    background-color: white;
+    border-radius: 50%;
     margin: 0 25px 0 0;
 }
 #audioOnOff{
@@ -152,5 +153,9 @@ h1{
 .poits{
     font-size: 40px;
     color: navy;
+}
+.scoreValue{
+    font-size: 40px;
+    color: white;
 }
 
